@@ -29,6 +29,10 @@ Inspired by [TextVide](https://github.com/Gumball12/text-vide).
 
 > font: `JetBrains Mono` settings used: `sep: ['', '']`, `fixationPoint: 1`, `extraContrast: true`, `currentLineOnly: false`
 
+![screenshot](./docs/spacers-example.png)
+
+> font: `CaskaydiaCove Nerd Font Mono` settings used: `sep: ['', '']`, `fixationPoint: 4`, `extraContrast: true`, `currentLineOnly: false`, `spacers: ["$camel"," ","_","{","(",".",":"]` 
+
 ## 📥 Installation
 
 Install from the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=timescam.code-vide).
@@ -76,17 +80,17 @@ If this option is `true`, the decorations will be applied only to the current cu
 
 ### `spacers`<a id="options-spacers"></a>
 
--   Default: `[" ", "_", "-", ".", ",", ";", ":", "(", ")", "[", "]", "{", "}", "<", ">", "=", "\"", "'", "$camal"]`
+-   Default: `[" ", "_", "-", ".", ",", ";", ":", "(", ")", "[", "]", "{", "}", "<", ">", "=", "\"", "'", "$camel"]`
 
 Characters that split text into words before bolding. Each entry is either:
 
 -   **A single character**, such as `_` or `(`. The character ends the current word and is not bolded.
 -   **A special matcher**, prefixed with `$`:
-    -   `$camal`: splits camelCase and PascalCase words (`camelCaseWord` → `camel`, `Case`, `Word`) and ends an uppercase run before lowercase letters (`HTTPmatch` → `HTTP`, `match`).
+    -   `$camel`: splits camelCase and PascalCase words (`camelCaseWord` → `camel`, `Case`, `Word`).
 
-Whitespace (spaces, tabs and line breaks) always splits words, even when it is not listed.
+Whitespace (spaces, tabs and line breaks) always splits words.
 
-For example, to split only on spaces and underscores, without camelCase splitting:
+For example, to split only on spaces and underscores:
 
 ```json
 "codeVide.spacers": [" ", "_"]

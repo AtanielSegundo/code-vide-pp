@@ -1,5 +1,13 @@
 # Change Log
 
+## [0.3.1] - 2026-13-11
+
+### Fixed
+- Minor Typos in TextMatcher
+
+### Added
+- Example Spacers Image
+
 ## [0.3.0] - 2026-10-11
 
 ### Added

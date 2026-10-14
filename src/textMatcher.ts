@@ -1,5 +1,3 @@
-const SPACERS = new Set<string>("\b");
-
 const SPECIAL_SPACER_PREFIX = "$";
 
 function predicate_is_spacer_special_char(value:string,_index:number,_array:string[]){
@@ -35,7 +33,7 @@ enum _Text_Case {
     Upper,
     Invalid
 } 
-class CamalMatcher implements SpecialSpacerMatcher {
+class CamelMatcher implements SpecialSpacerMatcher {
     last_last_char: string | null = null;
     last_char: string | null = null;
 
@@ -90,7 +88,7 @@ class CamalMatcher implements SpecialSpacerMatcher {
 type SpecialSpacerCtor = new () => SpecialSpacerMatcher;
 const AVAILABLE_SPECIAL_SPACERS : Map<string,SpecialSpacerCtor> = new Map(
     [
-        ["camal",CamalMatcher],
+        ["camel",CamelMatcher],
     ]
 )
 
@@ -104,7 +102,6 @@ export class TextMatcher{
     word_start_index: number = 0
     last_polled_idx: number = -1;
     chars_spacers : Set<string>
-    // TODO: HANDLE SPECIAL SPACERS CALLBACK
     special_spacers : Set<string>
     special_spacers_matchers : Array<SpecialSpacerMatcher> = []
     
@@ -182,17 +179,3 @@ export class TextMatcher{
         return null;
     }
 }
-
-function main(){
-    const text = "The quick brown fox jumps over the lazy dog and_the_skinny_snake_watches theThirstCamelDrinking while theSCREAMINGmonkey Screams";
-
-    var matcher = new TextMatcher(text,Array(" ", "_","\$camal"));
-    console.debug(matcher.chars_spacers,matcher.special_spacers)
-
-    let match: TextMatch | null;
-    while ((match = matcher.next()) != null){
-        console.log(match.substring_from(text));
-    }
-}
-
-main()

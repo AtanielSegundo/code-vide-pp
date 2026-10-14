@@ -5,11 +5,10 @@ import * as textMatcher from './textMatcher'
 let boldDecorationType: vscode.TextEditorDecorationType;
 let thinDecorationType: vscode.TextEditorDecorationType;
 
-// Optimized regex pattern for word matching
 const BATCH_SIZE = 10000; // Increased batch size for better performance
 
 // Keep in sync with the "codeVide.spacers" default in package.json
-const DEFAULT_SPACERS = [" ", "_", "-", ".", ",", ";", ":", "(", ")", "[", "]", "{", "}", "<", ">", "=", "\"", "'", "$camal"];
+const DEFAULT_SPACERS = [" ", "_", "-", ".", ",", ";", ":", "(", ")", "[", "]", "{", "}", "<", ">", "=", "\"", "'", "$camel"];
 
 // Cache for decorations to avoid unnecessary updates
 const decorationCache = new Map<string, {
