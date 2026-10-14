@@ -73,6 +73,17 @@
 					"maximum": 1000,
 					"description": "Delay in milliseconds before updating the text decorations after changes. Do not change this value unless you know what you are doing."
 				},
+				"codeVide.spacers": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"pattern": "^([^$]|\\$camal)$",
+						"patternErrorMessage": "Each spacer must be a single character (for example \"_\") or a special matcher (\"$camal\")."
+					},
+					"uniqueItems": true,
+					"default": [" ", "_", "-", ".", ",", ";", ":", "(", ")", "[", "]", "{", "}", "<", ">", "=", "\"", "'", "$camal"],
+					"markdownDescription": "Characters that split text into words before bolding. Each entry is either:\n\n- **A single character**, such as `_` or `(`. The character ends the current word and is not bolded.\n- **A special matcher**, prefixed with `$`:\n  - `$camal`: splits camelCase and PascalCase words (`camelCaseWord` → `camel`, `Case`, `Word`) and ends an uppercase run before lowercase letters (`HTTPmatch` → `HTTP`, `match`).\n\nWhitespace (spaces, tabs and line breaks) always splits words, even when it is not listed."
+				},
 				"codeVide.currentLineOnly": {
 					"type": "boolean",
 					"default": false,
@@ -82,10 +93,10 @@
 		}
 	},
 	"scripts": {
-		"vscode:prepublish": "pnpm run compile",
+		"vscode:prepublish": "npm run compile",
 		"compile": "tsc -p ./",
 		"watch": "tsc -watch -p ./",
-		"pretest": "pnpm run compile && pnpm run lint",
+		"pretest": "npm run compile && npm run lint",
 		"lint": "eslint src",
 		"test": "vscode-test"
 	},

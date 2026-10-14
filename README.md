@@ -17,6 +17,7 @@ Inspired by [TextVide](https://github.com/Gumball12/text-vide).
 | [Fixation-Points](#options-fixationpoint)     | ✅    |
 | [Extra Contrast](#options-extracontrast)      | ✅    |
 | [Current Line Only](#options-currentlineonly) | ✅    |
+| [Custom Spacers](#options-spacers)            | ✅    |
 
 ## 📸 Screenshots
 
@@ -72,6 +73,24 @@ If this option is `true`, the later half of text will be set to thin for extra c
 -   Default: `false`
 
 If this option is `true`, the decorations will be applied only to the current cursor line.
+
+### `spacers`<a id="options-spacers"></a>
+
+-   Default: `[" ", "_", "-", ".", ",", ";", ":", "(", ")", "[", "]", "{", "}", "<", ">", "=", "\"", "'", "$camal"]`
+
+Characters that split text into words before bolding. Each entry is either:
+
+-   **A single character**, such as `_` or `(`. The character ends the current word and is not bolded.
+-   **A special matcher**, prefixed with `$`:
+    -   `$camal`: splits camelCase and PascalCase words (`camelCaseWord` → `camel`, `Case`, `Word`) and ends an uppercase run before lowercase letters (`HTTPmatch` → `HTTP`, `match`).
+
+Whitespace (spaces, tabs and line breaks) always splits words, even when it is not listed.
+
+For example, to split only on spaces and underscores, without camelCase splitting:
+
+```json
+"codeVide.spacers": [" ", "_"]
+```
 
 ### `debounceDelay`
 
